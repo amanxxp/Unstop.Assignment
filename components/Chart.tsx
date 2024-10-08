@@ -24,7 +24,7 @@ const Chart = () => {
     return one;
   }
   return (
-    <div className="m-28 mt-14 mr-40 border-2">
+    <div className="m-28 mt-14 mr-40 border-1">
       <div className="text-center text-4xl font-semibold mt-4 mb-6">
         Coach A
       </div>
@@ -43,15 +43,15 @@ const Chart = () => {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-7 gap-y-6 mt-6 ml-16 mb-6">
+      <div className="grid grid-cols-7 md:gap-y-6 gap-y-4 mt-6 ml-16 mb-6">
         {seats.map((item, index) => (
           <div
             key={index}
-            className={` w-[55px] h-[25px]  rounded-lg hover:w-[56px] hover:h-[16px] flex justify-center items-center ${getSeatColor(
+            className={`xl:w-[80px] xl:h-[70px] md:w-[55px] md:h-[45px] w-[50px] h-[45px]  rounded-lg hover:w-[56px] hover:h-[46px] flex justify-center items-center ${getSeatColor(
               item
             )}`}
           >
-            <MdAirlineSeatReclineExtra />
+            <MdAirlineSeatReclineExtra className="w-2/4 h-2/4" />
           </div>
         ))}
       </div>
