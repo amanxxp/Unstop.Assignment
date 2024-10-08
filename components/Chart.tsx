@@ -1,4 +1,6 @@
 import React from "react";
+import BookNow from "@/components/BookNow";
+import Image from "next/image";
 import { MdAirlineSeatReclineExtra } from "react-icons/md";
 const Chart = () => {
   const seats: Array<number> = [
