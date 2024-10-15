@@ -1,28 +1,26 @@
 "use client";
 import React, { useState } from "react";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
-import { Button } from "@/components/ui/button";
-
-const BookNow = () => {
-  const [values, setValues] = useState({
-    booking: 0,
-  });
+interface BookNowProps {
+  values: {
+    booking: number;
+  };
+  setValues: React.Dispatch<React.SetStateAction<{ booking: number }>>;
+  open: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+const BookNow: React.FC<BookNowProps> = ({
+  values,
+  setValues,
+  open,
+  setOpen,
+}) => {
   const handleChange = (event: any) => {
     setValues({ ...values, [event.target.name]: Number(event.target.value) });
+    console.log(values);
   };
   const handleSubmit = async (event: any) => {
     event.preventDefault();
-    console.log(values);
+    setOpen(true);
   };
   return (
     <div className="text-center mb-40">
@@ -42,27 +40,10 @@ const BookNow = () => {
           <option value="6">6</option>
           <option value="7">7</option>
         </select>
-        <AlertDialog>
-          <AlertDialogTrigger asChild>
-            <button type='submit' className="bg-blue-500 w-[100px] h-[50px] text-3xl text-center ml-2">
-              Submit
-            </button>
-          </AlertDialogTrigger>
-          <AlertDialogContent>
-            <AlertDialogHeader>
-              <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-              <AlertDialogDescription>
-                {" "}
-                This action cannot be undone. This will permanently delete your
-                account and remove your data from our servers.
-              </AlertDialogDescription>
-            </AlertDialogHeader>
-            <AlertDialogFooter>
-              <AlertDialogCancel>Cancel</AlertDialogCancel>
-              <AlertDialogAction>Continue</AlertDialogAction>
-            </AlertDialogFooter>
-          </AlertDialogContent>
-        </AlertDialog>
+
+        <button className="bg-blue-500 w-[100px] h-[50px] text-3xl text-center ml-2">
+          Submit
+        </button>
       </form>
     </div>
   );
